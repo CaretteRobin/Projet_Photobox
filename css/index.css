@@ -2,3 +2,10 @@ img {
     max-width: 30rem;
     height: auto;
 }
+
+#galerie img.vignette {
+    width: 150px;
+    margin: 10px;
+    border: 1px solid #ccc;
+  }
+  
