@@ -3,9 +3,48 @@ img {
     height: auto;
 }
 
+#la_photo img {
+    cursor: pointer;
+  }
+  
+
 #galerie img.vignette {
     width: 150px;
     margin: 10px;
     border: 1px solid #ccc;
   }
+  
+
+  #lightbox {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0,0,0,0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+  }
+  
+  #lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+  }
+  
+  #lightbox.hidden {
+    display: none;
+  }
+  
+  #lightbox button {
+    position: absolute;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  #close_lightbox { top: 10px; right: 20px; }
+  #prev_lightbox { left: 10px; top: 50%; transform: translateY(-50%); }
+  #next_lightbox { right: 10px; top: 50%; transform: translateY(-50%); }
   

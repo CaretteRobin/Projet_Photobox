@@ -1,3 +1,5 @@
+import { getPicture } from "./index.js";
+
 export function displayGallery(galerie) {
     const container = document.getElementById("galerie");
     container.innerHTML = "";
@@ -24,9 +26,9 @@ export function displayGallery(galerie) {
       img.classList.add("vignette");
       img.style.cursor = "pointer";
   
-      // 🔁 Ajout de l’attribut data-id + clic
-      img.setAttribute("data-id", photo.id);
+      // Sur clic vignette, affiche photo dans #la_photo (pas lightbox)
       img.addEventListener("click", () => {
+        getPicture(photo.id);
         window.location.hash = `#${photo.id}`;
       });
   
@@ -37,4 +39,3 @@ export function displayGallery(galerie) {
       console.warn(`${erreurCount} photo(s) ignorée(s) car incomplètes.`);
     }
   }
-  
