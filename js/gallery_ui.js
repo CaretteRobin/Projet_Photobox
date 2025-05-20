@@ -7,7 +7,7 @@ export function displayGallery(galerie) {
   
     photos.forEach((wrapper, index) => {
       const photo = wrapper.photo;
-      console.log(photo); // utile
+      console.log(photo); // debug utile
   
       if (!photo || !photo.thumbnail || !photo.thumbnail.href) {
         console.warn(`Photo mal formée à l’index ${index} :`, wrapper);
@@ -22,6 +22,13 @@ export function displayGallery(galerie) {
       img.alt = photo.titre || `photo ${photo.id}`;
       img.title = photo.titre || `photo ${photo.id}`;
       img.classList.add("vignette");
+      img.style.cursor = "pointer";
+  
+      // 🔁 Ajout de l’attribut data-id + clic
+      img.setAttribute("data-id", photo.id);
+      img.addEventListener("click", () => {
+        window.location.hash = `#${photo.id}`;
+      });
   
       container.appendChild(img);
     });
