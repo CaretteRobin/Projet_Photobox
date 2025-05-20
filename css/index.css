@@ -1,50 +1,218 @@
-img {
-    max-width: 30rem;
-    height: auto;
+/* -------------------------- */
+/* 1. Police globale & fond   */
+/* -------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: #fbeee0;
+  color: #422800;
+  margin: 0;
+  padding: 0 20px 40px;
+  min-height: 100vh;
+}
+
+/* -------------------------- */
+/* 2. Titres                 */
+/* -------------------------- */
+
+h1, h4 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 10px;
+  letter-spacing: 1.2px;
+  text-align: center;
+  color: #6b4e00;
+}
+
+/* -------------------------- */
+/* 3. Photo principale (#la_photo) */
+/* -------------------------- */
+
+#la_photo {
+  max-width: 700px;
+  margin: 0 auto 40px;
+  text-align: center;
+  background: #fff3db;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 3px 3px 10px rgb(66 40 0 / 0.3);
 }
 
 #la_photo img {
-    cursor: pointer;
-  }
-  
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
 
-#galerie img.vignette {
-    width: 150px;
-    margin: 10px;
-    border: 1px solid #ccc;
-  }
-  
+#la_photo img:hover {
+  transform: scale(1.03);
+}
 
-  #lightbox {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(0,0,0,0.9);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    flex-direction: column;
+#la_photo h4, #la_photo p {
+  margin: 10px 0 0;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* -------------------------- */
+/* 4. Galerie (#galerie)      */
+/* -------------------------- */
+
+#galerie {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+}
+
+.vignette {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 2px 2px 5px rgb(66 40 0 / 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.vignette:hover {
+  transform: scale(1.1);
+  box-shadow: 4px 4px 15px rgb(66 40 0 / 0.4);
+}
+
+/* -------------------------- */
+/* 5. Boutons stylés          */
+/* -------------------------- */
+
+button {
+  font-family: 'Quicksand', sans-serif;
+}
+
+.button-74, button {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 18px;
+  line-height: 50px;
+  text-align: center;
+  user-select: none;
+  transition: background-color 0.3s, box-shadow 0.15s, transform 0.15s;
+}
+
+.button-74:hover, button:hover {
+  background-color: #fff;
+}
+
+.button-74:active, button:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+#pagination {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* -------------------------- */
+/* 6. Lightbox style          */
+/* -------------------------- */
+
+#lightbox {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(66, 40, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 9999;
+  padding: 20px;
+}
+
+#lightbox.hidden {
+  display: none;
+}
+
+#lightbox img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 15px;
+  box-shadow: 0 0 30px #fbeee0;
+}
+
+#lightbox button {
+  position: absolute;
+  background: none;
+  border: none;
+  color: #fbeee0;
+  font-size: 3rem;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px;
+  transition: color 0.3s;
+}
+
+#close_lightbox {
+  top: 15px;
+  right: 25px;
+}
+
+#close_lightbox:hover {
+  color: #ffd85c;
+}
+
+#prev_lightbox {
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#next_lightbox {
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#prev_lightbox:hover, #next_lightbox:hover {
+  color: #ffd85c;
+}
+
+/* -------------------------- */
+/* 7. Responsive              */
+/* -------------------------- */
+
+@media (max-width: 600px) {
+  #galerie {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
   }
-  
-  #lightbox img {
-    max-width: 90%;
-    max-height: 80%;
+
+  #la_photo {
+    max-width: 100%;
+    padding: 10px;
   }
-  
-  #lightbox.hidden {
-    display: none;
+
+  .button-74, button {
+    font-size: 16px;
+    line-height: 40px;
+    padding: 0 14px;
   }
-  
-  #lightbox button {
-    position: absolute;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-  }
-  
-  #close_lightbox { top: 10px; right: 20px; }
-  #prev_lightbox { left: 10px; top: 50%; transform: translateY(-50%); }
-  #next_lightbox { right: 10px; top: 50%; transform: translateY(-50%); }
-  
+}

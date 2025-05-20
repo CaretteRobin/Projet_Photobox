@@ -47,7 +47,7 @@ export async function getPicture(id) {
   }
 }
 
-// 🔎 Ouvre la lightbox
+// Ouvre la lightbox
 export function openLightbox(id) {
   currentPhotoId = parseInt(id);
   document.getElementById("lightbox").classList.remove("hidden");
