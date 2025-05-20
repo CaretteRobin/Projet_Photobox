@@ -5,15 +5,16 @@ export function displayPicture(data) {
     const imageUrl = new URL(data.url.href, "https://webetu.iutnc.univ-lorraine.fr").href;
   
     const html = template({
-      imageUrl: imageUrl,
+      imageUrl,
       titre: data.titre,
       descr: data.descr,
       type: data.type,
       width: data.width,
-      height: data.height
+      height: data.height,
+      categorie: data.categorie,
+      commentaires: data.commentaires || []
     });
   
-    const container = document.getElementById("la_photo");
-    container.innerHTML = html;
+    document.getElementById("la_photo").innerHTML = html;
   }
   
