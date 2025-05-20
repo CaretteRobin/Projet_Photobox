@@ -3,6 +3,8 @@ import { loadGallery } from "/js/gallery.js";
 import { displayGallery } from "/js/gallery_ui.js";
 import { displayPicture } from "/js/ui.js";
 
+let galerieLinks = {};
+
 async function getPicture(id) {
   try {
     const picture = await photoloader.loadPicture(id);
@@ -16,10 +18,10 @@ async function getPicture(id) {
     if (links?.categorie?.href) {
       const catUrl = new URL(links.categorie.href, "https://webetu.iutnc.univ-lorraine.fr").href;
       const catData = await photoloader.loadResource(catUrl);
-      categorie = catData.categorie?.nom; // ✅ corrigé ici
+      categorie = catData.categorie?.nom; // 
     }
 
-    if (links?.comments?.href) { // ✅ corrigé ici
+    if (links?.comments?.href) { // 
       const comUrl = new URL(links.comments.href, "https://webetu.iutnc.univ-lorraine.fr").href;
       const comData = await photoloader.loadResource(comUrl);
       commentaires = comData.comments || [];
@@ -37,15 +39,51 @@ async function getPicture(id) {
   }
 }
 
-
 document.querySelector("#load_gallery").addEventListener("click", async () => {
   try {
-    const galerie = await loadGallery();
-    displayGallery(galerie);
+    const { photos, links } = await loadGallery();
+    galerieLinks = links;
+    displayGallery({ photos });
   } catch (e) {
     console.error("Impossible de charger la galerie :", e);
   }
 });
+
+function setupPagination() {
+  document.getElementById("next_page").addEventListener("click", async () => {
+    if (galerieLinks?.next?.href) {
+      const { photos, links } = await loadGallery(galerieLinks.next.href);
+      galerieLinks = links;
+      displayGallery({ photos });
+    }
+  });
+
+  document.getElementById("prev_page").addEventListener("click", async () => {
+    if (galerieLinks?.prev?.href) {
+      const { photos, links } = await loadGallery(galerieLinks.prev.href);
+      galerieLinks = links;
+      displayGallery({ photos });
+    }
+  });
+
+  document.getElementById("first_page").addEventListener("click", async () => {
+    if (galerieLinks?.first?.href) {
+      const { photos, links } = await loadGallery(galerieLinks.first.href);
+      galerieLinks = links;
+      displayGallery({ photos });
+    }
+  });
+
+  document.getElementById("last_page").addEventListener("click", async () => {
+    if (galerieLinks?.last?.href) {
+      const { photos, links } = await loadGallery(galerieLinks.last.href);
+      galerieLinks = links;
+      displayGallery({ photos });
+    }
+  });
+}
+
+setupPagination();
 
 const id = window.location.hash ? window.location.hash.substring(1) : 105;
 getPicture(id);

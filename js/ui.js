@@ -16,5 +16,5 @@ export function displayPicture(data) {
     });
   
     document.getElementById("la_photo").innerHTML = html;
+    
   }
-  

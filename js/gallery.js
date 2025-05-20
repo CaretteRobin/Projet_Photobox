@@ -1,10 +1,14 @@
-import { API_BASE_URL } from "./config.js";
-import { loadResource } from "./photoloader.js";
+import { API_BASE_URL } from './config.js';
+import { loadResource } from './photoloader.js';
 
-let galerieData = null;
+export async function loadGallery(uri) {
+  const fullUri = uri
+    ? new URL(uri, "https://webetu.iutnc.univ-lorraine.fr").href
+    : `${API_BASE_URL}/photos`;
 
-export async function loadGallery() {
-  const uri = `${API_BASE_URL}/photos`;
-  galerieData = await loadResource(uri);
-  return galerieData;
+  const data = await loadResource(fullUri);
+  return {
+    photos: data.photos,
+    links: data.links
+  };
 }

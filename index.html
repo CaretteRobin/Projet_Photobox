@@ -18,6 +18,12 @@
 
 <!-- Bouton galerie + conteneur -->
 <button id="load_gallery">Charger la galerie</button>
+<div id="pagination">
+	<button id="first_page">« Première</button>
+	<button id="prev_page">‹ Précédente</button>
+	<button id="next_page">Suivante ›</button>
+	<button id="last_page">Dernière »</button>
+  </div>  
 <section id="galerie"></section>
 
 <!-- Template Handlebars pour une photo complète -->
@@ -29,10 +35,10 @@
   <h4>Catégorie : {{categorie}}</h4>
   <h4>Commentaires :</h4>
   <ul>
-    {{#each commentaires}}
-      <li>{{pseudo}} : {{message}}</li>
-    {{/each}}
-  </ul>
+	{{#each commentaires}}
+	  <li><strong>{{pseudo}}</strong> : {{content}}</li>
+	{{/each}}
+  </ul>  
 </script>
 
 <script type="module" src="js/index.js"></script>
