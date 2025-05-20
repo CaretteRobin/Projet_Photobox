@@ -1,4 +1,4 @@
-# Projet Photobox - Galerie Photo Interactive
+# 📸 Projet Photobox - Galerie Photo Interactive
 
 Ce projet est une **application web de gestion et visualisation de photos** réalisée dans le cadre du TD6 "Mini-projet Photobox".  
 Il utilise **JavaScript moderne (ES Modules), HTML5, CSS3 et Handlebars** pour fournir une expérience fluide et interactive autour d’une galerie photo.
