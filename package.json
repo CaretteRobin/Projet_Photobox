@@ -4,6 +4,7 @@
     "handlebars": "^4.7.8"
   },
   "scripts": {
-    "build": "esbuild index.js --bundle  --sourcemap --target=es2015 --outfile=js/index.js"
+    "build": "esbuild js/index.js --bundle --sourcemap --target=es2015 --outfile=dist/index.js",
+    "dev": "npm run build && npx serve ."
   }
 }
