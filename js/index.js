@@ -1,7 +1,7 @@
-import * as photoloader from "/js/photoloader.js";
-import { loadGallery } from "/js/gallery.js";
-import { displayGallery } from "/js/gallery_ui.js";
-import { displayPicture } from "/js/ui.js";
+import * as photoloader from "./photoloader.js";
+import { loadGallery } from "./gallery.js";
+import { displayGallery } from "./gallery_ui.js";
+import { displayPicture } from "./ui.js";
 
 let galerieLinks = {};
 let currentPhotoId = null;
